@@ -1,0 +1,72 @@
+.landing-page .hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-image: url("../../assets/main.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 600px;
+    width: 100%;
+    color: white;
+    font-weight: bold;
+}
+.landing-page .hero button {
+    width: 95px;
+    height: 35px;
+    margin: 12px;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    background-color: hsla(0, 85%, 66%, 1);
+    border: 0.5px hsla(0, 0%, 75%, 1);
+}
+.landing-page .hero p {
+    font-size: 2rem;
+    text-align: center;
+}
+
+.landing-page h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-top: 24px;
+    text-decoration: underline;
+}
+.landing-page .walk-through {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row wrap;
+    margin-top: 24px;
+}
+
+.landing-page .walk-through .card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 12px;
+    height: auto;
+    width: 250px;
+    color: black;
+    border-radius: 1em;
+    position: relative;
+    margin: 12px;
+}
+.landing-page .walk-through .card svg {
+    color: hsla(0, 94%, 48%, 1);
+}
+.landing-page .walk-through .card h2 {
+    width: 100%;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 1rem;
+}
+.landing-page .walk-through .card p {
+    width: 100%;
+    text-align: center;
+    margin: 12px;
+    font-family: "Cormorant Garamond'";
+    padding: 6px;
+}

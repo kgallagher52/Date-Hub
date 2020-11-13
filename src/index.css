@@ -1,15 +1,22 @@
-body {
+* {
+  box-sizing: border-box;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  margin: 0;
+  background: #fff;
+  font-family: "'Cormorant Garamond', serif Roboto, sans-serif";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .wrapper {
@@ -18,6 +25,25 @@ code {
   margin-left: auto;
   margin-right: auto;
 }
+
+/* Color Theme Swatches in Hex */
+/* .color-lightblue-hex { #418fbf; }
+.color-darkblue-hex { #024059; }
+.color-red-hex { #f20707; }
+.color-salmon-hex { #f25e5e; }
+.color-gray-hex { #bfbfbf; } */
+/* Color Theme Swatches in RGBA */
+/* .color-lightblue-rgba { rgba(65, 142, 191, 1); }
+.color-darkblue-rgba { rgba(1, 64, 89, 1); }
+.color-red-rgba { rgba(242, 7, 7, 1); }
+.color-salmon-rgba { rgba(242, 94, 94, 1); }
+.color-gray-rgba { rgba(191, 191, 191, 1); } */
+/* Color Theme Swatches in HSLA */
+/* .color-lightblue--hsla {  hsla(202, 49%, 50%, 1);}
+.color-darkblue-hsla { hsla(196, 96%, 17%, 1); }
+.color-red-hsla { hsla(0, 94%, 48%, 1); }
+.color-salmon-hsla { hsla(0, 85%, 66%, 1); }
+.color-gray-hsla { hsla(0, 0%, 75%, 1); } */
 
 @media screen and (min-width: 768px) {
   .wrapper {

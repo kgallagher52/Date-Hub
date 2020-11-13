@@ -1,0 +1,114 @@
+.navigation {
+    background-color: hsla(202, 49%, 50%, 1);
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navigation svg {
+    color: white;
+    font-size: 24px;
+    min-width: 24px;
+}
+
+.navigation a {
+    text-decoration: none;
+    color: white;
+}
+.navigation .header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-left: 24px;
+}
+
+.navigation .header img {
+    width: 150px;
+}
+
+.navigation ul {
+    position: fixed;
+    width: 300px;
+    background-color: hsla(202, 49%, 50%, 1);
+    z-index: 99;
+    transition: right 300ms;
+    text-align: right;
+    padding: 1rem;
+    margin: 0;
+    top: 0;
+    bottom: 0;
+    right: -300px;
+    list-style: none;
+}
+
+.navigation ul.open {
+    right: 0;
+}
+
+.navigation ul li {
+    margin: 1rem 0;
+}
+.navigation a:hover {
+    transition: ease-in-out 0.5s;
+    color: hsla(0, 85%, 66%, 1);
+}
+.navigation ul li span {
+    width: 20px;
+    height: 21px;
+    background-color: #d8d8d8;
+    font-size: 16px;
+    letter-spacing: 0.15px;
+    color: #1e1e1e;
+    border-radius: 50%;
+    padding: 4px;
+}
+
+.navigation ul li a {
+    color: white;
+    font-size: 20px;
+}
+
+.navigation ul li a:not(:hover) {
+    text-decoration: none;
+}
+
+.navigation ul li.selected a {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+@media (min-width: 992px) {
+    .navigation {
+        justify-content: center;
+    }
+
+    .navigation .header {
+        max-width: 960px;
+        margin-left: 0;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .navigation svg {
+        display: none;
+    }
+
+    .navigation ul {
+        position: initial;
+        background-color: initial;
+        display: flex;
+        list-style: none;
+        padding: 0;
+        width: 200px;
+        font-weight: bold;
+        justify-content: space-between;
+    }
+
+    .navigation ul li a {
+        color: white;
+        padding: 1rem;
+        width: 100%;
+    }
+}
