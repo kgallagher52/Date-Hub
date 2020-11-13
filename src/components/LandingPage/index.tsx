@@ -10,8 +10,8 @@ const LandingPage = () => {
         Try Demo
       </button>
     </div>
-    <h2>How it Works</h2>
     <div className="walk-through">
+      <h2>How it Works</h2>
       {
         [
           { icon: <FaMapMarkerAlt size={25} />, paragraph: "Put your location in to get places near you.", title: "Location" },
