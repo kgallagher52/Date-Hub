@@ -1,14 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 import Page404 from "./components/Page404";
 import LandingPage from "./components/LandingPage";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
+import { geolocated } from "react-geolocated";
 import "./App.css";
 
-const App = () => {
+const App = (props: any) => {
+  useEffect(() => {
+    if (props.coords) {
+      const area = { longitude: props.coords.longitude, latitude: props.coords.latitude }
+      sessionStorage.setItem("GEO", JSON.stringify(area));
+    }
+  }, [props])
   return (
-    <div data-test="app">
+    <div>
       <Navigation />
       <Switch>
         <Route exact path="/" component={LandingPage} />
@@ -19,4 +26,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default geolocated({ positionOptions: { enableHighAccuracy: false, }, userDecisionTimeout: 5000, })(App);
