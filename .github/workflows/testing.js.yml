@@ -26,4 +26,3 @@ jobs:
       - run: npm ci
       - run: npm install
       - run: node scripts/build.js
-      - run: npm test
