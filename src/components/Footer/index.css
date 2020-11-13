@@ -24,6 +24,7 @@ footer ul {
 footer ul li {
     font-weight: bold;
     margin-right: 12px;
+    font-size: 1rem;
 }
 footer ul li a {
     color: white;
@@ -58,12 +59,12 @@ footer .copyright {
     margin: 1rem 1rem 0;
     padding-bottom: 1rem;
     font-size: 10px;
-    color: black;
+    color: white;
     text-align: center;
 }
 
 footer .copyright a {
-    color: black;
+    color: white;
 }
 
 @media (min-width: 768px) {
@@ -77,6 +78,9 @@ footer .copyright a {
     }
     footer ul li + li {
         margin: 0;
+    }
+    footer h1 {
+        text-decoration: none;
     }
 
     footer ul ul li + li {

@@ -21,7 +21,7 @@ const Footer = () => {
             </div>
             <hr />
             <div className="copyright">
-                &copy; {new Date().getFullYear()} Wilson Electronics |&nbsp;
+                &copy; {new Date().getFullYear()} DATE HUB
             </div>
         </footer>
     )

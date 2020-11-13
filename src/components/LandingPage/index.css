@@ -39,6 +39,8 @@
     align-items: center;
     flex-flow: row wrap;
     margin-top: 24px;
+    margin-bottom: 200px;
+    /* Margin Bottom is temporary */
 }
 
 .landing-page .walk-through .card {
