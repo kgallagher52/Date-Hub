@@ -7,7 +7,7 @@ const Dashboard = () => {
     const [activeLink, setActiveLink] = useState<string>('food');
     const [error, setError] = useState<string>('');
     const [cardData, setCardData] = useState<Card[]>([]);
-    const [itinerary, setItinerary] = useState<Card[]>([]);
+    const [, setItinerary] = useState<Card[]>([]);
 
     useEffect(() => {
         const userLocation: any = sessionStorage.getItem('GEO');
