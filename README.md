@@ -26,3 +26,6 @@
        /get-food?lat=-33.8670522&lon=151.1957362&type=restaurant&keyword=takeout
        /get-activities=?33.8670522&lon=151.1957362&type=["asSDs"]
     
+# Resources 
+    GEO Location
+        https://www.npmjs.com/package/react-geolocated

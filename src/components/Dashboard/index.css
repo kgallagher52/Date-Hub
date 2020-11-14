@@ -1,0 +1,48 @@
+.dashboard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+}
+.dashboard .tabs {
+    height: 100px;
+    width: 100%;
+    display: grid;
+    align-items: center;
+    grid-template-columns: auto auto auto;
+    flex-direction: row;
+}
+
+.dashboard .tabs div {
+    text-transform: uppercase;
+    color: hsla(196, 96%, 17%, 1);
+    text-align: center;
+    cursor: pointer;
+}
+.dashboard .tabs div:hover {
+    transition: ease-in-out 0.5s;
+    font-weight: bold;
+}
+.active {
+    text-decoration: underline;
+    font-weight: bold;
+}
+.dashboard .error {
+    font-size: 2rem;
+    color: red;
+}
+.dashboard .tabs span {
+    margin: 0 auto;
+    font-size: 2rem;
+}
+/* Cards */
+
+.dashboard .cards {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-flow: row wrap;
+    margin-top: 15px;
+    overflow: scroll;
+}

@@ -8,6 +8,7 @@ import Footer from "./components/Footer";
 import SignUpModal from "./components/Modals/SignUp";
 import LoginModal from "./components/Modals/LogIn";
 import GlobalContext from "./context/GlobalContext";
+import Dashboard from "./components/Dashboard";
 // import PrivateRoute from "./components/PrivateRoute";
 import { geolocated } from "react-geolocated";
 import "./App.css";
@@ -60,6 +61,7 @@ const App = (props: any) => {
         <Navigation />
         <Switch>
           <Route exact path="/" component={LandingPage} />
+          <Route exact path="/dashboard" component={Dashboard} />
           <Route component={Page404} />
         </Switch>
         <Footer />
@@ -68,4 +70,8 @@ const App = (props: any) => {
   );
 };
 
-export default geolocated({ positionOptions: { enableHighAccuracy: false, }, userDecisionTimeout: 5000, })(App);
+export default geolocated({
+  positionOptions:
+    { enableHighAccuracy: false, },
+  userDecisionTimeout: 5000,
+})(App);
