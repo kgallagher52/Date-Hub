@@ -5,7 +5,7 @@ import Axios from 'axios';
 import '../index.css';
 
 const SignUpModal = () => {
-    const { setActiveModal, setUser } = useContext(GlobalContext);
+    const { setActiveModal, handleUser } = useContext(GlobalContext);
     const [name, setName] = useState<string>('');
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
@@ -18,17 +18,15 @@ const SignUpModal = () => {
         const userPayload = { email: email, name: name, password: password, photo: "" }
         Axios.post('/signup', JSON.stringify(userPayload)).then((res) => {
             console.log("Profile Created.", res.status);
-            console.log({ res });
-            setUser({});
-            history.push('/dashboard')
+            handleUser({ ...res.data, dates: [] });
+            setActiveModal('');
+            history.push('/dashboard');
         }).catch(err => {
             if (err.response.status === 409) {
                 alert('Email already is signed up.')
             }
             console.error({ err })
         })
-        history.push("/dashboard");
-        setActiveModal('signup');
     }
 
     return (

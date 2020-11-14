@@ -29,6 +29,11 @@ footer ul li {
 footer ul li a {
     color: white;
 }
+footer ul .selected {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
 footer ul li a:hover {
     color: hsla(0, 85%, 66%, 1);
 }

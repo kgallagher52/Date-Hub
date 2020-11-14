@@ -4,7 +4,7 @@ import GlobalContext from '../../context/GlobalContext';
 import './index.css';
 
 const Navigation = () => {
-    const { setActiveModal, user } = useContext(GlobalContext);
+    const { setActiveModal, user, handleSignOut } = useContext(GlobalContext);
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [selectedLink, setSelectedLink] = useState<string>("/");
     const drawer = createRef<HTMLUListElement>();
@@ -32,7 +32,7 @@ const Navigation = () => {
     return (
         <nav className="navigation">
             <div className="header">
-                <a href="/">
+                <a href={user.email ? '/dashboard' : '/'}>
                     <h1>DATE HUB</h1>
                 </a>
                 <ul ref={drawer} className={`drawer ${isOpen && 'open'}`}>
@@ -42,15 +42,17 @@ const Navigation = () => {
                     {[
                         { title: 'Sign Up', href: '', isPrivate: false },
                         { title: 'Log In', href: '', isPrivate: false },
-                        { title: user.email, href: '/Profile', isPrivate: true }
+                        { title: 'Dashboard', href: '/dashboard', isPrivate: true },
+                        { title: user.name, href: '/profile', isPrivate: true },
+                        { title: 'Sign Out', isPrivate: true }
                     ]
-                        .filter(f => f.title)
+                        .filter(f => { if (user.email) { return f.isPrivate === true } else { return f.isPrivate === false } })
                         .map((l, i) =>
                             <li className={selectedLink === l.href ? "selected" : undefined} key={i}>
                                 {
                                     l.title === "Sign Up" || l.title === "Log In"
                                         ? <span onClick={() => l.title === "Sign Up" ? setActiveModal('signup') : setActiveModal('login')}>{l.title}</span>
-                                        : <a href={l.href}>{l.isPrivate && l.href === "/Profile" && <span>{user?.email} </span>}{l.title}</a>
+                                        : l.href ? <a href={l.href}>{l.title}</a> : <span onClick={() => handleSignOut()}>{l.title}</span>
                                 }
                             </li>
                         )

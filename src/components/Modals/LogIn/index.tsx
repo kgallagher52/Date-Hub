@@ -1,11 +1,10 @@
 import React, { FormEvent, useContext, useState } from 'react';
 import { useHistory } from "react-router";
 import GlobalContext from '../../../context/GlobalContext';
-// import Axios from 'axios';
+import Axios from 'axios';
 import '../index.css';
 const LoginModal = () => {
-    const { setActiveModal } = useContext(GlobalContext);
-
+    const { setActiveModal, handleUser } = useContext(GlobalContext);
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const history = useHistory();
@@ -13,13 +12,18 @@ const LoginModal = () => {
 
     const loginUser = (e: FormEvent) => {
         e.preventDefault();
-        // const userPayload = { email: email, password: password }
-        // Axios.post('/login', JSON.stringify(userPayload)).then((res) => {
-        //     console.log("Profile Created.", res.status);
-        //     console.log({ res });
-        // })
-        history.push("/dashboard");
-        setActiveModal('login');
+        const userPayload = { email: email, password: password }
+        Axios.post('/login', JSON.stringify(userPayload)).then((res) => {
+            console.log("Profile Created.", res.status);
+            handleUser({ email: res.data.email, name: res.data.userName, photo: res.data.photoBinary, dates: res.data.dates });
+            setActiveModal('');
+            history.push('/dashboard');
+        }).catch(err => {
+            if (err.response.status === 409) {
+                alert('Email already is signed up.')
+            }
+            console.error({ err })
+        })
     }
 
     return (

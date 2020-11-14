@@ -101,7 +101,7 @@
         display: flex;
         list-style: none;
         padding: 0;
-        width: 200px;
+        width: fit-content;
         font-weight: bold;
         justify-content: space-between;
     }
