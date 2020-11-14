@@ -1,18 +1,20 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import GlobalContext from '../../context/GlobalContext'
 import "./index.css";
 
 const Footer = () => {
+    const { setActiveModal } = useContext(GlobalContext);
     return (
         <footer data-test="footer">
             <div className="body">
                 <h1>DATE HUB</h1>
                 <ul>
                     {[
-                        { title: 'Sign Up', href: '', isPrivate: false },
-                        { title: 'Log In', href: '', isPrivate: false },
+                        { title: 'Sign Up' },
+                        { title: 'Log In' },
                     ].map((l, i) =>
                         <li className="link" key={i}>
-                            <a href={l.href}>{l.title}</a>
+                            <span onClick={() => setActiveModal(l.title === "Sign Up" ? 'signup' : 'login')}>{l.title}</span>
                         </li>
                     )
                     }

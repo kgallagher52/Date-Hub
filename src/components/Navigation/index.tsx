@@ -1,10 +1,12 @@
-import React, { useEffect, useState, createRef } from 'react';
+import React, { useEffect, useState, createRef, useContext } from 'react';
 import { MdClose, MdMenu } from 'react-icons/md';
+import GlobalContext from '../../context/GlobalContext';
 import './index.css';
 
-const Navigation = ({ profile, toggleModal }: NavBarProps) => {
-    const [isOpen, setIsOpen] = useState(false);
-    const [selectedLink, setSelectedLink] = useState("/");
+const Navigation = () => {
+    const { setActiveModal, user } = useContext(GlobalContext);
+    const [isOpen, setIsOpen] = useState<boolean>(false);
+    const [selectedLink, setSelectedLink] = useState<string>("/");
     const drawer = createRef<HTMLUListElement>();
 
     useEffect(() => {
@@ -40,15 +42,15 @@ const Navigation = ({ profile, toggleModal }: NavBarProps) => {
                     {[
                         { title: 'Sign Up', href: '', isPrivate: false },
                         { title: 'Log In', href: '', isPrivate: false },
-                        { title: profile?.name, href: '/Profile', isPrivate: true }
+                        { title: user.email, href: '/Profile', isPrivate: true }
                     ]
-                        .filter(f => f.isPrivate === !!profile)
+                        .filter(f => f.title)
                         .map((l, i) =>
                             <li className={selectedLink === l.href ? "selected" : undefined} key={i}>
                                 {
                                     l.title === "Sign Up" || l.title === "Log In"
-                                        ? <span onClick={() => l.title === "Sign Up" ? toggleModal('signup') : toggleModal('login')}>{l.title}</span>
-                                        : <a href={l.href}>{l.isPrivate && l.href === "/Profile" && <span>{profile?.name.match(/\b(\w)/g)?.join('')} </span>}{l.title}</a>
+                                        ? <span onClick={() => l.title === "Sign Up" ? setActiveModal('signup') : setActiveModal('login')}>{l.title}</span>
+                                        : <a href={l.href}>{l.isPrivate && l.href === "/Profile" && <span>{user?.email} </span>}{l.title}</a>
                                 }
                             </li>
                         )

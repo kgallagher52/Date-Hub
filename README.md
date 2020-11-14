@@ -16,3 +16,13 @@
 
 # Color Scheme
  https://color.adobe.com/search?q=date%20site
+
+
+# Endpoints
+    POST
+        /signup
+        /login
+    GET
+       /get-food?lat=-33.8670522&lon=151.1957362&type=restaurant&keyword=takeout
+       /get-activities=?33.8670522&lon=151.1957362&type=["asSDs"]
+    

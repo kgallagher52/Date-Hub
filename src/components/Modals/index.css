@@ -1,4 +1,4 @@
-.sign-up-modal {
+.modal {
     position: fixed;
     top: 0;
     bottom: 0;
@@ -8,7 +8,7 @@
     background-color: rgba(0, 0, 0, 0.75);
 }
 
-.sign-up-modal .modal-backdrop {
+.modal .modal-backdrop {
     position: fixed;
     top: 0;
     bottom: 0;
@@ -16,18 +16,18 @@
     right: 0;
     z-index: 103;
 }
-.sign-up-modal ul {
+.modal ul {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     padding: 0;
 }
-.sign-up-modal > *:not(.modal-backdrop) {
+.modal > *:not(.modal-backdrop) {
     z-index: 104;
 }
 
-.sign-up-modal .modal-body {
+.modal .modal-body {
     z-index: 105;
     position: relative;
     align-items: center;
@@ -36,7 +36,7 @@
     width: 100%;
 }
 
-.sign-up-modal {
+.modal {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -46,11 +46,11 @@ a,
 [type="submit"] {
     transition: all 0.25s ease-in;
 }
-.sign-up-modal input {
+.modal input {
     outline: none;
     width: 100%;
 }
-.signup__container {
+.modal-container {
     position: absolute;
     top: 50%;
     right: 0;
@@ -65,7 +65,7 @@ a,
     width: 100%;
     height: 100%;
 }
-.signup__overlay {
+.modal-overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -73,8 +73,7 @@ a,
     height: 100%;
     background-color: rgba(0, 0, 0, 0.76);
 }
-.container__child {
-    width: 50%;
+.container-child {
     height: 100%;
     color: #fff;
 }
@@ -84,13 +83,16 @@ h2 {
     font-weight: 300;
     color: rgba(255, 255, 255, 1);
 }
-.signup__form {
+.modal-form {
     width: 100%;
     padding: 2.5rem;
     background: #fafafa;
 }
 .form-group {
     padding: 12px;
+}
+.form-group .password-match {
+    color: hsla(0, 94%, 48%, 1);
 }
 label {
     font-size: 0.85rem;
@@ -108,7 +110,7 @@ label {
 .form-control:focus {
     border-color: #111;
 }
-.btn--form {
+.btn-form {
     padding: 0.5rem 2.5rem;
     font-size: 0.95rem;
     font-weight: 600;
@@ -117,25 +119,25 @@ label {
     background: hsla(0, 85%, 66%, 1);
     cursor: pointer;
 }
-.btn--form:focus:hover {
-    background: lighten(#111, 13%);
+.btn-form:hover {
+    transition: ease-in-out 0.5s;
+    background-color: hsla(196, 96%, 17%, 1);
 }
 
-.signup__link {
+.modal-link {
     font-size: 0.8rem;
     font-weight: 600;
     text-decoration: underline;
-    color: #999;
+    color: hsla(0, 0%, 75%, 1);
+    cursor: pointer;
+}
+.modal-link:hover {
+    transition: ease-in-out 0.5s;
+    color: black;
 }
 
-.signup__link:focus {
-    color: darken(#999, 13%);
-}
-.signup__link:hover {
-    color: darken(#999, 13%);
-}
 @media (min-width: 768px) {
-    .sign-up-modal .modal-body {
+    .modal .modal-body {
         width: unset;
     }
 }
