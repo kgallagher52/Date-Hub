@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import Axios from 'axios';
-import './index.css';
 import EventCard from '../EventCard';
+import './index.css';
 
 const Dashboard = () => {
     const [activeLink, setActiveLink] = useState<string>('food');
     const [error, setError] = useState<string>('');
     const [cardData, setCardData] = useState<Card[]>([]);
+    const [itinerary, setItinerary] = useState<Card[]>([]);
 
     useEffect(() => {
         const userLocation: any = sessionStorage.getItem('GEO');
@@ -18,7 +19,7 @@ const Dashboard = () => {
         console.log(JSON.stringify(payload))
         Axios.get(`/${activeLink === 'food' ? 'get-food' : 'get-activities'}`, { params: { ...payload } }).then((res) => {
             setCardData(res.data.results);
-            console.log(res.data.results);
+
         }).catch(err => {
             console.error({ err })
         })
@@ -27,6 +28,19 @@ const Dashboard = () => {
             setCardData([]);
         }
     }, [activeLink])
+
+    const handleItinerary = (event: any) => {
+        setItinerary(itinerary => {
+            const newItinerary = [...itinerary]
+            const index = newItinerary.findIndex(e => e.place_id === event.place_id);
+            if (index === -1) {
+                newItinerary.push(event);
+            } else {
+                newItinerary.splice(index, 1)
+            }
+            return newItinerary
+        })
+    }
 
     return (
         <div className="dashboard wrapper">
@@ -40,7 +54,7 @@ const Dashboard = () => {
                     {cardData.length > 0 ?
                         <div className="cards">
                             {cardData.map((c, i) => (
-                                <EventCard key={i} event={{ ...c }} />
+                                <EventCard onClick={() => handleItinerary(c)} key={i} event={c} />
                             ))
                             }
                         </div>

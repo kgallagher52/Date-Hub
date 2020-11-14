@@ -3,12 +3,13 @@ type Card = {
     name: String,
     photo?: String,
     rating: Number,
-    ratingsAmt: Number,
+    user_ratings_total: Number,
     reference: String,
     vicinity: String
 }
 
 type EventCardProps = {
-    event: Card
+    event: Card;
+    onClick: () => void;
 }
 

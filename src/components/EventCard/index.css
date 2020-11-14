@@ -1,6 +1,7 @@
 .card {
     width: 300px;
-    margin-bottom: 20px;
+    height: 350px;
+    margin: 24px;
     padding-bottom: 30px;
     background: #fefff9;
     color: #363636;
@@ -8,15 +9,40 @@
     box-shadow: black 0 0 8px 0;
     border-radius: 4px;
 }
-.card span,
-.card .card-summary {
+.card span {
     display: block;
 }
 .card .card-summary {
-    padding: 5% 5% 3% 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 180px;
 }
-.card .card-summary ul {
-    list-style: none;
+.card .card-summary div {
+    margin: 6px 0;
+}
+.card .card-summary div p {
+    font-size: 13px;
+}
+
+.card .card-summary span {
+    font-weight: bold;
+}
+.card .card-summary button {
+    width: 250px;
+    height: 35px;
+    margin: 12px;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    background-color: hsla(0, 85%, 66%, 1);
+    border: 0.5px hsla(0, 0%, 75%, 1);
+    cursor: pointer;
+}
+.card .card-summary button:hover {
+    transition: ease-in-out 0.5s;
+    background-color: hsla(196, 96%, 17%, 1);
 }
 .card .card-header {
     position: relative;
@@ -31,7 +57,7 @@
     border-radius: 4px 4px 0 0;
 }
 .card-title {
-    background: hsla(0, 94%, 48%, 1);
+    background: hsla(202, 49%, 50%, 1);
     padding: 3.5% 0 2.5% 0;
     color: white;
     font-family: "Roboto Condensed", sans-serif;
@@ -39,11 +65,13 @@
     position: absolute;
     bottom: 0;
     width: 100%;
+    height: 37px;
+    overflow: hidden;
 }
+
 .card-title h3 {
-    font-size: 1.2em;
+    font-size: 0.9rem;
     line-height: 1.2;
-    padding: 0 3.5%;
     margin: 0;
 }
 img {
