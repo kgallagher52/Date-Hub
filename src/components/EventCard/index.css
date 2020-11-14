@@ -1,4 +1,4 @@
-.card {
+.event-card {
     width: 300px;
     height: 350px;
     margin: 24px;
@@ -9,27 +9,27 @@
     box-shadow: black 0 0 8px 0;
     border-radius: 4px;
 }
-.card span {
+.event-card span {
     display: block;
 }
-.card .card-summary {
+.event-card .event-card-summary {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     height: 180px;
 }
-.card .card-summary div {
+.event-card .event-card-summary div {
     margin: 6px 0;
 }
-.card .card-summary div p {
+.event-card .event-card-summary div p {
     font-size: 13px;
 }
 
-.card .card-summary span {
+.event-card .event-card-summary span {
     font-weight: bold;
 }
-.card .card-summary button {
+.event-card .event-card-summary button {
     width: 250px;
     height: 35px;
     margin: 12px;
@@ -40,11 +40,11 @@
     border: 0.5px hsla(0, 0%, 75%, 1);
     cursor: pointer;
 }
-.card .card-summary button:hover {
+.event-card .event-card-summary button:hover {
     transition: ease-in-out 0.5s;
     background-color: hsla(196, 96%, 17%, 1);
 }
-.card .card-header {
+.event-card .event-card-header {
     position: relative;
     height: 175px;
     overflow: hidden;
@@ -56,7 +56,7 @@
     background-blend-mode: overlay;
     border-radius: 4px 4px 0 0;
 }
-.card-title {
+.event-card-title {
     background: hsla(202, 49%, 50%, 1);
     padding: 3.5% 0 2.5% 0;
     color: white;
@@ -69,7 +69,7 @@
     overflow: hidden;
 }
 
-.card-title h3 {
+.event-card-title h3 {
     font-size: 0.9rem;
     line-height: 1.2;
     margin: 0;
@@ -78,7 +78,7 @@ img {
     max-width: 100%;
 }
 @media (max-width: 700px) {
-    .card {
+    .event-card {
         width: 100%;
     }
 }
