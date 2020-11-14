@@ -21,13 +21,26 @@
     font-weight: bold;
     background-color: hsla(0, 85%, 66%, 1);
     border: 0.5px hsla(0, 0%, 75%, 1);
+    cursor: pointer;
 }
+
+.landing-page .hero button:hover {
+    transition: ease-in-out 0.5s;
+    background-color: hsla(196, 96%, 17%, 1);
+}
+
 .landing-page .hero p {
     font-size: 2rem;
     text-align: center;
 }
-
 .landing-page .walk-through {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.landing-page .walk-through div {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -37,10 +50,10 @@
 
 .landing-page .walk-through h2 {
     text-align: center;
+    margin: 24px 0;
     font-size: 2rem;
     width: 100%;
     margin-top: 24px;
-    text-decoration: underline;
 }
 
 .landing-page .walk-through .card {

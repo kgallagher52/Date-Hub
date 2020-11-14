@@ -2,7 +2,7 @@ import React, { useEffect, useState, createRef } from 'react';
 import { MdClose, MdMenu } from 'react-icons/md';
 import './index.css';
 
-const Navigation = ({ profile }: NavBarProps) => {
+const Navigation = ({ profile, toggleModal }: NavBarProps) => {
     const [isOpen, setIsOpen] = useState(false);
     const [selectedLink, setSelectedLink] = useState("/");
     const drawer = createRef<HTMLUListElement>();
@@ -45,7 +45,11 @@ const Navigation = ({ profile }: NavBarProps) => {
                         .filter(f => f.isPrivate === !!profile)
                         .map((l, i) =>
                             <li className={selectedLink === l.href ? "selected" : undefined} key={i}>
-                                <a href={l.href}>{l.isPrivate && l.href === "/Profile" && <span>{profile?.name.match(/\b(\w)/g)?.join('')} </span>}{l.title}</a>
+                                {
+                                    l.title === "Sign Up" || l.title === "Log In"
+                                        ? <span onClick={() => l.title === "Sign Up" ? toggleModal('signup') : toggleModal('login')}>{l.title}</span>
+                                        : <a href={l.href}>{l.isPrivate && l.href === "/Profile" && <span>{profile?.name.match(/\b(\w)/g)?.join('')} </span>}{l.title}</a>
+                                }
                             </li>
                         )
                     }

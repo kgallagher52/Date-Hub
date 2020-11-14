@@ -8,4 +8,5 @@ type Profile = {
 
 type NavBarProps = {
     profile?: Profile;
+    toggleModal: (string) => void;
 };

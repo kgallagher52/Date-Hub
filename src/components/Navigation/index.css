@@ -50,19 +50,19 @@
 .navigation ul li {
     margin: 1rem 0;
 }
-.navigation a:hover {
+.navigation a:hover,
+.navigation ul li span:hover {
     transition: ease-in-out 0.5s;
     color: hsla(0, 85%, 66%, 1);
 }
 .navigation ul li span {
     width: 20px;
     height: 21px;
-    background-color: #d8d8d8;
     font-size: 16px;
     letter-spacing: 0.15px;
-    color: #1e1e1e;
-    border-radius: 50%;
+    color: #fff;
     padding: 4px;
+    cursor: pointer;
 }
 
 .navigation ul li a {
