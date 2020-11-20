@@ -1,4 +1,4 @@
-# Date-Hub
+# dateerary
 
 
 
@@ -11,7 +11,7 @@
 # Tools
 
     1. Github
-    2. Heroku - FrontEnd: https://date-hub.herokuapp.com/ Backend: https://date-hub-backend.herokuapp.com/
+    2. Heroku - FrontEnd: https://dateerary.herokuapp.com/ 
 
 
 # Color Scheme
