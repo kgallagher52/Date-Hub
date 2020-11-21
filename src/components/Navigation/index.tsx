@@ -52,7 +52,7 @@ const Navigation = () => {
                         .map((l, i) =>
                             <li className={selectedLink === l.href ? "selected" : undefined} key={i}>
                                 {
-                                    l.title === "Sign Up/Sign In"
+                                    l.title === "Sign Up / Sign In"
                                         ? <span onClick={() => setActiveModal('Authenticate')}>{l.title}</span>
                                         : l.href ? <a href={l.href}>{l.title}</a> : <span onClick={() => handleSignOut()}>{l.title}</span>
                                 }
