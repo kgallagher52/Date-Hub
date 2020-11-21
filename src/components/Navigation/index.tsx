@@ -1,7 +1,6 @@
 import React, { useEffect, useState, createRef, useContext } from 'react';
 import { MdClose, MdMenu } from 'react-icons/md';
 import GlobalContext from '../../context/GlobalContext';
-import Auth from '../../firebase/auth/index'
 import './index.css';
 
 const Navigation = () => {
@@ -36,24 +35,22 @@ const Navigation = () => {
                 <a href={user.email ? '/dashboard' : '/'}>
                     <h1>DATE HUB</h1>
                 </a>
-                <Auth />
                 <ul ref={drawer} className={`drawer ${isOpen && 'open'}`}>
                     <li>
                         <MdClose onClick={() => document.body.click()} />
                     </li>
                     {[
-                        { title: 'Sign Up', href: '', isPrivate: false },
-                        { title: 'Log In', href: '', isPrivate: false },
+                        { title: 'Sign Up/Sign In', href: '', isPrivate: false },
                         { title: 'Dashboard', href: '/dashboard', isPrivate: true },
-                        { title: user.name, href: '/profile', isPrivate: true },
+                        { title: user.displayName, href: '/profile', isPrivate: true },
                         { title: 'Sign Out', isPrivate: true }
                     ]
                         .filter(f => { if (user.email) { return f.isPrivate === true } else { return f.isPrivate === false } })
                         .map((l, i) =>
                             <li className={selectedLink === l.href ? "selected" : undefined} key={i}>
                                 {
-                                    l.title === "Sign Up" || l.title === "Log In"
-                                        ? <span onClick={() => l.title === "Sign Up" ? setActiveModal('signup') : setActiveModal('login')}>{l.title}</span>
+                                    l.title === "Sign Up/Sign In"
+                                        ? <span onClick={() => setActiveModal('Authenticate')}>{l.title}</span>
                                         : l.href ? <a href={l.href}>{l.title}</a> : <span onClick={() => handleSignOut()}>{l.title}</span>
                                 }
                             </li>
@@ -62,7 +59,7 @@ const Navigation = () => {
                 </ul>
             </div>
             <MdMenu onClick={() => setIsOpen(true)} />
-        </nav>
+        </nav >
     )
 }
 

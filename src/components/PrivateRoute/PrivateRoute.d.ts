@@ -1,9 +1,11 @@
 import { FC } from "react";
 
 type User = {
-    name?: string;
+    uid?: string;
+    displayName?: string;
     email?: string;
-    photo?: string;
+    photoURL?: string;
+    phoneNumber?: string;
     dates?: string[];
 }
 type PrivateRouteProps = {

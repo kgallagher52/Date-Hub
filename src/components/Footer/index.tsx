@@ -15,8 +15,7 @@ const Footer = () => {
                 <h1>DATE HUB</h1>
                 <ul>
                     {[
-                        { title: 'Sign Up', isPrivate: false },
-                        { title: 'Log In', isPrivate: false },
+                        { title: 'Sign Up/Sign In', isPrivate: false },
                         { title: 'Dashboard', href: '/dashboard', isPrivate: true },
                         { title: 'Profile', href: '/profile', isPrivate: true },
 
@@ -24,7 +23,7 @@ const Footer = () => {
                         .filter(f => { if (user.email) { return f.isPrivate === true } else { return f.isPrivate === false } })
                         .map((l, i) =>
                             <li className={`link ${selectedLink === l.href && "selected"}`} key={i}>
-                                {l.href ? <a href={l.href}>{l.title}</a> : <span onClick={() => setActiveModal(l.title === "Sign Up" ? 'signup' : 'login')}>{l.title}</span>}
+                                {l.href ? <a href={l.href}>{l.title}</a> : <span onClick={() => setActiveModal('Authenticate')}>{l.title}</span>}
                             </li>
                         )
                     }
