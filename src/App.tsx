@@ -12,7 +12,7 @@ import Dashboard from "./components/Dashboard";
 // import PrivateRoute from "./components/PrivateRoute";
 import { geolocated } from "react-geolocated";
 import "./App.css";
-import { User } from "./components/PrivateRoute/PrivateRoute";
+import { handleUserData } from "./firebase/Functions/User";
 
 const App = (props: any) => {
   const [activeModal, setActiveModal] = useState<string>('');
@@ -32,21 +32,25 @@ const App = (props: any) => {
 
   useEffect(() => {
     if (!isSignedIn) return;
-    const currentUser = firebase.auth().currentUser?.providerData || []
+    handleSignIn();
+    return () => {
+      setUser({});
+    }
+  }, [isSignedIn,setUser])
 
-    setUser({
+  const handleSignIn = async () => {
+    const currentUser = firebase.auth().currentUser?.providerData || []
+    const userModel = {
       uid: currentUser[0]?.uid,
       displayName: currentUser[0]?.displayName,
       email: currentUser[0]?.email,
       photoURL: currentUser[0]?.photoURL,
       phoneNumber: currentUser[0]?.phoneNumber,
       dates: []
-    })
-
-    return () => {
-      setUser({});
     }
-  }, [isSignedIn])
+    const user = await handleUserData(userModel);
+    setUser(user);
+  }
 
   const handleSignOut = () => {
     var r = window.confirm("Are you sure you want to sign out?");

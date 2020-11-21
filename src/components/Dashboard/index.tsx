@@ -16,7 +16,6 @@ const Dashboard = () => {
         }
         const userObj = JSON.parse(userLocation);
         const payload = { lat: userObj.latitude, lon: userObj.longitude, type: "restaurant" }
-        console.log(JSON.stringify(payload))
         Axios.get(`/${activeLink === 'food' ? 'get-food' : 'get-activities'}`, { params: { ...payload } }).then((res) => {
             setCardData(res.data.results);
 

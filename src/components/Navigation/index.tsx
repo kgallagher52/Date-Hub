@@ -32,7 +32,7 @@ const Navigation = () => {
     return (
         <nav className="navigation">
             <div className="header">
-                <a href={user.email ? '/dashboard' : '/'}>
+                <a href={user?.email ? '/dashboard' : '/'}>
                     <h1>DATE HUB</h1>
                 </a>
                 <ul ref={drawer} className={`drawer ${isOpen && 'open'}`}>
@@ -40,12 +40,12 @@ const Navigation = () => {
                         <MdClose onClick={() => document.body.click()} />
                     </li>
                     {[
-                        { title: 'Sign Up/Sign In', href: '', isPrivate: false },
+                        { title: 'Sign Up / Sign In', href: '', isPrivate: false },
                         { title: 'Dashboard', href: '/dashboard', isPrivate: true },
-                        { title: user.displayName, href: '/profile', isPrivate: true },
+                        { title: user?.displayName, href: '/profile', isPrivate: true },
                         { title: 'Sign Out', isPrivate: true }
                     ]
-                        .filter(f => { if (user.email) { return f.isPrivate === true } else { return f.isPrivate === false } })
+                        .filter(f => { if (user?.email) { return f.isPrivate === true } else { return f.isPrivate === false } })
                         .map((l, i) =>
                             <li className={selectedLink === l.href ? "selected" : undefined} key={i}>
                                 {

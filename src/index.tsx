@@ -7,6 +7,7 @@ import './firebase/config';
 import "./index.css";
 
 Axios.defaults.baseURL = process.env.REACT_APP_API_URL;
+
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
