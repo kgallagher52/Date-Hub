@@ -1,24 +1,27 @@
-import React, { useEffect, useState, createRef, useContext } from 'react';
-import { MdClose, MdMenu } from 'react-icons/md';
-import GlobalContext from '../../context/GlobalContext';
-import './index.css';
+import React, { useEffect, useState, createRef, useContext } from "react";
+import { MdClose, MdMenu } from "react-icons/md";
+import GlobalContext from "../../context/GlobalContext";
+import "./index.css";
 
 const Navigation = () => {
-    const { setActiveModal, user, handleSignOut } = useContext(GlobalContext);
-    const [isOpen, setIsOpen] = useState<boolean>(false);
-    const [selectedLink, setSelectedLink] = useState<string>("/");
-    const drawer = createRef<HTMLUListElement>();
+  const { setActiveModal, user, handleSignOut } = useContext(GlobalContext);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [selectedLink, setSelectedLink] = useState<string>("/");
+  const drawer = createRef<HTMLUListElement>();
 
-    useEffect(() => {
-        setSelectedLink(window.location.href.slice(window.location.href.lastIndexOf("/")))
-    }, [])
+  useEffect(() => {
+    setSelectedLink(
+      window.location.href.slice(window.location.href.lastIndexOf("/"))
+    );
+  }, []);
 
-    useEffect(
-        () => {
-            if (!isOpen) return;
-            const handleOffClick = (e: MouseEvent) => {
-                const clickedInDrawer = e.target === drawer.current || drawer.current!.contains(e.target as Node);
-                if (clickedInDrawer) return;
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleOffClick = (e: MouseEvent) => {
+      const clickedInDrawer =
+        e.target === drawer.current ||
+        drawer.current!.contains(e.target as Node);
+      if (clickedInDrawer) return;
 
                 e.preventDefault();
                 setIsOpen(false);
@@ -63,4 +66,4 @@ const Navigation = () => {
     )
 }
 
-export default Navigation
+export default Navigation;
