@@ -1,19 +1,21 @@
 import React from "react";
 import { FaMapMarkerAlt, FaBiking, FaClipboardList, FaShareAlt } from 'react-icons/fa'
+import { useHistory } from "react-router";
 import "./index.css";
 
 const LandingPage = () => {
+  const history = useHistory();
+
   return <div className="landing-page">
     <div className="hero">
       <p>Start Building your customized date now!</p>
-      <button>
+      <button onClick={() => history.push('/dashboard')}>
         Try Demo
       </button>
     </div>
     <div className="walk-through">
       <h2>How it Works</h2>
       <div>
-
         {
           [
             { icon: <FaMapMarkerAlt size={25} />, paragraph: "Put your location in to get places near you.", title: "Location" },

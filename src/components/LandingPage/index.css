@@ -90,7 +90,7 @@
 
 @media (min-width: 992px) {
     .landing-page .walk-through {
-        height: 500px;
+        height: 330px;
         /* Height needs to change when we get more content */
     }
 }

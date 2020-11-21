@@ -1,6 +1,7 @@
 import React, { useEffect, useState, createRef, useContext } from 'react';
 import { MdClose, MdMenu } from 'react-icons/md';
 import GlobalContext from '../../context/GlobalContext';
+import Auth from '../../firebase/auth/index'
 import './index.css';
 
 const Navigation = () => {
@@ -35,6 +36,7 @@ const Navigation = () => {
                 <a href={user.email ? '/dashboard' : '/'}>
                     <h1>DATE HUB</h1>
                 </a>
+                <Auth />
                 <ul ref={drawer} className={`drawer ${isOpen && 'open'}`}>
                     <li>
                         <MdClose onClick={() => document.body.click()} />
