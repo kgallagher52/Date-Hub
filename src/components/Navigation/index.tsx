@@ -23,61 +23,47 @@ const Navigation = () => {
         drawer.current!.contains(e.target as Node);
       if (clickedInDrawer) return;
 
-      e.preventDefault();
-      setIsOpen(false);
-      document.body.addEventListener("click", handleOffClick);
-    };
-    document.body.addEventListener("click", handleOffClick);
-    return () => document.body.removeEventListener("click", handleOffClick);
-  }, [isOpen, drawer]);
-  return (
-    <nav className="navigation">
-      <div className="header">
-        <a href={user.email ? "/dashboard" : "/"}>
-          <h1>Dateerary</h1>
-        </a>
-        <ul ref={drawer} className={`drawer ${isOpen && "open"}`}>
-          <li>
-            <MdClose onClick={() => document.body.click()} />
-          </li>
-          {[
-            { title: "Sign Up", href: "", isPrivate: false },
-            { title: "Log In", href: "", isPrivate: false },
-            { title: "Dashboard", href: "/dashboard", isPrivate: true },
-            { title: user.name, href: "/profile", isPrivate: true },
-            { title: "Sign Out", isPrivate: true },
-          ]
-            .filter((f) => {
-              if (user.email) {
-                return f.isPrivate === true;
-              } else {
-                return f.isPrivate === false;
-              }
-            })
-            .map((l, i) => (
-              <li className={selectedLink === l.href ? "selected" : undefined} key={i} >
-                {l.title === "Sign Up" || l.title === "Log In" ? (
-                  <span
-                    onClick={() =>
-                      l.title === "Sign Up"
-                        ? setActiveModal("signup")
-                        : setActiveModal("login")
+                e.preventDefault();
+                setIsOpen(false);
+                document.body.addEventListener('click', handleOffClick);
+            };
+            document.body.addEventListener('click', handleOffClick);
+            return () => document.body.removeEventListener('click', handleOffClick);
+        },
+        [isOpen, drawer]
+    );
+    return (
+        <nav className="navigation">
+            <div className="header">
+                <a href={user?.email ? '/dashboard' : '/'}>
+                    <h1>DATE HUB</h1>
+                </a>
+                <ul ref={drawer} className={`drawer ${isOpen && 'open'}`}>
+                    <li>
+                        <MdClose onClick={() => document.body.click()} />
+                    </li>
+                    {[
+                        { title: 'Sign Up / Sign In', href: '', isPrivate: false },
+                        { title: 'Dashboard', href: '/dashboard', isPrivate: true },
+                        { title: user?.displayName, href: '/profile', isPrivate: true },
+                        { title: 'Sign Out', isPrivate: true }
+                    ]
+                        .filter(f => { if (user?.email) { return f.isPrivate === true } else { return f.isPrivate === false } })
+                        .map((l, i) =>
+                            <li className={selectedLink === l.href ? "selected" : undefined} key={i}>
+                                {
+                                    l.title === "Sign Up/Sign In"
+                                        ? <span onClick={() => setActiveModal('Authenticate')}>{l.title}</span>
+                                        : l.href ? <a href={l.href}>{l.title}</a> : <span onClick={() => handleSignOut()}>{l.title}</span>
+                                }
+                            </li>
+                        )
                     }
-                  >
-                    {l.title}
-                  </span>
-                ) : l.href ? (
-                  <a href={l.href}>{l.title}</a>
-                ) : (
-                  <span onClick={() => handleSignOut()}>{l.title}</span>
-                )}
-              </li>
-            ))}
-        </ul>
-      </div>
-      <MdMenu onClick={() => setIsOpen(true)} />
-    </nav>
-  );
-};
+                </ul>
+            </div>
+            <MdMenu onClick={() => setIsOpen(true)} />
+        </nav >
+    )
+}
 
 export default Navigation;

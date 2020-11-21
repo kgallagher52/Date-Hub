@@ -5,8 +5,7 @@ import { PrivateRouteProps } from './PrivateRoute';
 const PrivateRoute = ({ children, user }: PrivateRouteProps) => {
     const history = useHistory();
     useEffect(() => {
-        console.log(user);
-        if (!user.email) {
+        if (!user?.email) {
             history.push('/dasboard')
         }
     }, [user])
