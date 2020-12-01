@@ -16,3 +16,6 @@
 # Resources 
     GEO Location
         https://www.npmjs.com/package/react-geolocated
+
+    CORS PROXY
+        https://cors-anywhere.herokuapp.com/

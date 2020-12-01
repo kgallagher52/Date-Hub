@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import Axios from 'axios';
 import EventCard from '../EventCard';
 import './index.css';
+import getPlaces from '../../firebase/controllers/Google';
 
 const Dashboard = () => {
     const [activeLink, setActiveLink] = useState<string>('food');
@@ -15,13 +15,8 @@ const Dashboard = () => {
             setError('Need location to get data.')
         }
         const userObj = JSON.parse(userLocation);
-        const payload = { lat: userObj.latitude, lon: userObj.longitude, type: "restaurant" }
-        Axios.get(`/${activeLink === 'food' ? 'get-food' : 'get-activities'}`, { params: { ...payload } }).then((res) => {
-            setCardData(res.data.results);
-
-        }).catch(err => {
-            console.error({ err })
-        })
+        // const payload = { lat: userObj.latitude, lon: userObj.longitude, type: "restaurant" }
+        getPlaces(userObj.latitude, userObj.longitude);
         return () => {
             setActiveLink('food');
             setCardData([]);

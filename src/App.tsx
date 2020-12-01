@@ -36,7 +36,9 @@ const App = (props: any) => {
     return () => {
       setUser({});
     }
-  }, [isSignedIn,setUser])
+  }, [isSignedIn, setUser])
+
+
 
   const handleSignIn = async () => {
     const currentUser = firebase.auth().currentUser?.providerData || []

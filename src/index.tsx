@@ -6,7 +6,7 @@ import Axios from 'axios';
 import './firebase/config';
 import "./index.css";
 
-Axios.defaults.baseURL = process.env.REACT_APP_API_URL;
+Axios.defaults.baseURL = process.env.REACT_APP_GOOGLE_API_URL;
 
 ReactDOM.render(
   <React.StrictMode>
