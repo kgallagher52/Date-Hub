@@ -10,7 +10,7 @@ const EventCard = ({ event, onClick }: EventCardProps) => {
                 </span>
             </span>
             <div className="card-summary">
-                <div><span>Location:</span><p>{event.vicinity}</p></div>
+                <div><span>Location:</span><p>{event.formatted_address}</p></div>
                 <div><button onClick={onClick}>Add to itinerary</button></div>
             </div>
         </div >

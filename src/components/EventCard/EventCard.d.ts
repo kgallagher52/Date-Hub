@@ -1,11 +1,14 @@
 type Card = {
     place_id: string,
-    name: String,
-    photo?: String,
-    rating: Number,
-    user_ratings_total: Number,
-    reference: String,
-    vicinity: String
+    name: string,
+    photo?: string,
+    rating: number,
+    user_ratings_total: number,
+    reference: string,
+    vicinity: string
+    price_level: number,
+    opening_hours?: boolean
+    formatted_address: string
 }
 
 type EventCardProps = {

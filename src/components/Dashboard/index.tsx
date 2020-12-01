@@ -9,14 +9,16 @@ const Dashboard = () => {
     const [cardData, setCardData] = useState<Card[]>([]);
     const [, setItinerary] = useState<Card[]>([]);
 
-    useEffect(() => {
-        const userLocation: any = sessionStorage.getItem('GEO');
-        if (userLocation === null) {
-            setError('Need location to get data.')
-        }
-        const userObj = JSON.parse(userLocation);
-        // const payload = { lat: userObj.latitude, lon: userObj.longitude, type: "restaurant" }
-        getPlaces(userObj.latitude, userObj.longitude);
+    useEffect( () => {
+        (async () => {
+            const userLocation: any = sessionStorage.getItem('GEO');
+            if (userLocation === null) {
+                setError('Need location to get data.')
+            }
+            const userObj = JSON.parse(userLocation);
+            const cards = await  getPlaces(userObj.latitude, userObj.longitude);
+            setCardData(cards);
+           })()
         return () => {
             setActiveLink('food');
             setCardData([]);
