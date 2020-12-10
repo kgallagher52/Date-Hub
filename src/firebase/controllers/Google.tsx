@@ -7,27 +7,38 @@ type GooglePlacesProps = {
 
 const getPlaces = (lat: GooglePlacesProps, long: GooglePlacesProps): Card[] => {
 
-   const places:any =  Axios.get(`json?location=${lat},${long}&radius=1500&type=restaurant&keyword=cruise&key=${process.env.REACT_APP_GOOGLE_API_KEY}`)
-        .then(data => {
-            const formatedData = data.data.results.map((d:any) => {
+    const places: any = Axios.get(`http://localhost:8080/getFood?lat=${lat}&lon=${long}`)
+        .then(res => {
+            const cards = res.data.map((d: any) => {
                 return {
                     place_id: d?.place_id,
                     name: d.name,
-                    photo:d.photos ? d.photos[0].html_attributions[0].split("href=")[1].split(">")[0] :"" ,
-                    rating:d.rating,
-                    user_ratings_total:d.user_ratings_total,
-                    reference:d.reference,
+                    photo: d.photos ? d.photos[0].photo_reference : "",
+                    rating: d.rating,
+                    user_ratings_total: d.user_ratings_total,
+                    reference: d.reference,
                     price_level: d.price_level,
-                    opening_hours:d.opening_hours,
+                    opening_hours: d.opening_hours,
                     formatted_address: d.formatted_address
                 }
             })
-            return formatedData
+            // Getting the image for each card
+            // cards.forEach(async (c: any) => {
+            //     if (c.reference !== "") {
+            //         Axios.get(`http://localhost:8080/getItemPhoto?reference=${c.photo}`).then(data => {
+            //             console.log("sdsdw", data);
+            //         }).catch(err => {
+            //             console.log(err);
+            //         })
+            //     }
+            // });
+
+            return cards
         }).catch(err => {
-            console.log({err})
+            console.log({ err })
             return ["err", err]
         })
-        return places
+    return places
 }
 
 export default getPlaces;
